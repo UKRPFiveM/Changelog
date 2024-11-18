@@ -1,4 +1,3 @@
-
 const changelogData = [
     { category: "Added", description: "AI Menu (Jack)" },
     { category: "Added", description: "Questions to AI Menu (Jack)" },
@@ -73,11 +72,68 @@ function groupByCategory(data) {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
       backToTopButton.style.display = "block";
+      backToTopButton.classList.add("show");
     } else {
-      backToTopButton.style.display = "none";
+      backToTopButton.classList.remove("show");
     }
   });
   
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+
+document.querySelectorAll('.changelog-item').forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.add('highlight');
+        setTimeout(() => item.classList.remove('highlight'), 1000);
+    });
+});
+
+
+function updateSnowPile() {
+    const snowPile = document.querySelector('.snow-pile');
+    const scrollPosition = window.scrollY;
+    const maxHeight = 50;
+    const height = Math.min(30 + (scrollPosition / 100), maxHeight);
+    snowPile.style.height = `${height}px`;
+}
+
+window.addEventListener('scroll', updateSnowPile);
+
+
+document.body.style.cursor = 'url(path/to/christmas-cursor.png), auto';
+
+
+function addFloatingEmoji() {
+    const emojis = ['🎄', '🎅', '🎁', '⛄', '❄️', '🦌', '🔔', '🎉', '✨'];
+    const emoji = document.createElement('div');
+    emoji.className = 'floating-emoji';
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    document.body.appendChild(emoji);
+    
+    const startX = Math.random() * window.innerWidth;
+    emoji.style.left = `${startX}px`;
+    
+    setTimeout(() => {
+        emoji.remove();
+    }, 5000);
+}
+
+setInterval(addFloatingEmoji, 3000);
+
+
+function addSparkle(e) {
+    const spark = document.createElement('div');
+    spark.className = 'sparkle';
+    spark.style.left = `${e.offsetX}px`;
+    spark.style.top = `${e.offsetY}px`;
+    this.appendChild(spark);
+    
+    setTimeout(() => spark.remove(), 1000);
+}
+
+document.querySelectorAll('.changelog-item, .join-server, h1, h2, h3')
+    .forEach(element => {
+        element.addEventListener('mousemove', addSparkle);
+    });
