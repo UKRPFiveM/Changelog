@@ -3,53 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UKRP Changelog🎄</title>
+  <title>UKRP Changelog</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="snow-canvas"></canvas>
-  <div class="snow-pile"></div>
-
-  <header>
-    <div class="header-content">
-        <h1>🎄 UKRP 🎅</h1>
-        <p>Spreading holiday cheer with our Christmas update! 🎁</p>
-        <div class="cta-buttons">
-            <a href="https://discord.gg/nuaarHxRwm" class="join-server">
-                <span class="icon">🎮</span>
-                Join Our Server
-                <span class="icon">🎁</span>
-            </a>
-        </div>
-    </div>
-    <div class="header-decorations">
-        <div class="frost-effect"></div>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="#" class="active">Changelog</a>
+      </div>
+      <div class="nav-buttons">
+        <a href="https://discord.gg/nuaarHxRwm" class="discord-btn">
+          Join Discord
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
-    <section id="changelog">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="logo-container">
+          <img src="images/ukrp.png" alt="UKRP Logo" class="server-logo">
+        </div>
+        <h1>UKRP Changelog</h1>
+        <p>Stay updated with our latest changes and improvements</p>
+        <div class="server-status">
+          <span class="status-dot"></span>
+          Server Status: Online
+        </div>
+      </div>
+    </section>
+
+    <section class="main-content">
       <div class="container">
-        <h2>🎁 Latest Changelog 🎁</h2>
-        <div id="changelog-content">
+        <div class="info-box">
+          <h2>Latest Updates</h2>
+          <div id="changelog-content" class="division-list">
+            <!-- Changelog content will be inserted here by script.js -->
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <button id="back-to-top" title="Back to Top">
-      <span>⬆️</span>
+  <button id="back-to-top" class="connect-btn" title="Back to Top">
+    ↑
   </button>
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 United Kingdom RP. All rights reserved. | <a href="#">Join the Server</a></p>
-      <p>Made with ❤️ and Christmas cheer!</p>
+      <div class="footer-content">
+        <div class="footer-links">
+        </div>
+        <p>&copy; 2024 United Kingdom RP. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="snowflakes.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
