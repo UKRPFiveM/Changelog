@@ -151,19 +151,30 @@ body {
 }
 
 
+.changelog-category {
+    margin-bottom: 2rem;
+}
+
+.changelog-category:last-child {
+    margin-bottom: 0;
+}
+
 .changelog-category h3 {
     color: var(--accent);
     margin-bottom: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .changelog-item {
+    margin-bottom: 0.8rem;
+    padding: 1rem;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
     transition: all 0.3s ease;
+}
+
+.changelog-item:last-child {
+    margin-bottom: 0;
 }
 
 .changelog-item:hover {
@@ -334,5 +345,103 @@ footer {
     .server-logo {
         max-width: 120px;
     }
+}
+
+/* Date Section Styling */
+.changelog-date-section {
+    margin-bottom: 1.5rem;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.date-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.date-header::after {
+    content: 'Click to expand';
+    position: absolute;
+    right: 3.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.date-header.active::after {
+    content: 'Click to collapse';
+}
+
+.date-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.date-header h3 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.date-header i {
+    transition: transform 0.3s ease;
+    color: var(--accent);
+}
+
+.date-header.active i {
+    transform: rotate(180deg);
+}
+
+
+@media (max-width: 576px) {
+    .date-header::after {
+        display: none; 
+    }
+    
+    .date-header i {
+        animation: bounce 2s infinite;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-3px);
+    }
+    60% {
+        transform: translateY(-2px);
+    }
+}
+
+.changelog-items {
+    display: none;
+    padding: 1.5rem;
+}
+
+.changelog-items.active {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+
+.changelog-item {
+    margin-bottom: 0.8rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.changelog-item:last-child {
+    margin-bottom: 0;
 }
 
