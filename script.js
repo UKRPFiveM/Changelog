@@ -214,61 +214,100 @@ const changelogData = {
 
 const changelogContent = document.getElementById("changelog-content");
 
+// Group changes by month
+const groupedChanges = {};
 Object.entries(changelogData).forEach(([date, changes]) => {
-    const dateSection = document.createElement("div");
-    dateSection.classList.add("changelog-date-section");
+    const [day, month, year] = date.split('/');
+    const monthYear = `${new Date(year, month - 1).toLocaleString('default', { month: 'long' })} ${year}`;
     
-    const dateHeader = document.createElement("div");
-    dateHeader.classList.add("date-header");
-    dateHeader.innerHTML = `
-        <h3>${date}</h3>
-        <i class="fas fa-chevron-down"></i>
-    `;
+    if (!groupedChanges[monthYear]) {
+        groupedChanges[monthYear] = [];
+    }
     
-    const changelogItems = document.createElement("div");
-    changelogItems.classList.add("changelog-items");
-    
-
-    const groupedChanges = changes.reduce((acc, item) => {
-        acc[item.category] = acc[item.category] || [];
-        acc[item.category].push(item.description);
-        return acc;
-    }, {});
-    
-
-    const sortedCategories = Object.entries(groupedChanges).sort(([a], [b]) => {
-        const order = { "Added": 1, "Fixed": 2, "Removed": 3 };
-        return (order[a] || 99) - (order[b] || 99);
+    groupedChanges[monthYear].push({
+        date: `${day}/${month}/${year}`,
+        changes
     });
+});
+
+// Render grouped changes
+Object.entries(groupedChanges).forEach(([monthYear, dates]) => {
+    const monthSection = document.createElement('div');
+    monthSection.className = 'month-section';
     
-   
-    sortedCategories.forEach(([category, descriptions], index) => {
-        const categoryDiv = document.createElement("div");
-        categoryDiv.classList.add("changelog-category");
+    const monthHeader = document.createElement('h3');
+    monthHeader.className = 'month-header';
+    monthHeader.textContent = monthYear;
+    monthSection.appendChild(monthHeader);
+
+    dates.forEach(({ date, changes }) => {
+        const dateDiv = document.createElement("div");
+        dateDiv.className = "changelog-date";
         
-  
-        const categoryHeader = document.createElement("h3");
-        categoryHeader.textContent = category;
-        categoryDiv.appendChild(categoryHeader);
-        
-        descriptions.forEach(desc => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("changelog-item");
-            itemDiv.innerHTML = `<p><strong>${category}</strong> - ${desc}</p>`;
-            categoryDiv.appendChild(itemDiv);
+        const dateHeader = document.createElement("div");
+        dateHeader.className = "date-header";
+        dateHeader.innerHTML = `
+            <span class="date-text">${date}</span>
+            <button class="expand-btn" aria-label="Toggle changes">
+                <svg class="chevron-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+            </button>
+        `;
+        dateDiv.appendChild(dateHeader);
+
+        const changesDiv = document.createElement("div");
+        changesDiv.className = "changes-container";
+
+        const categories = {};
+        changes.forEach((change) => {
+            if (!categories[change.category]) {
+                categories[change.category] = [];
+            }
+            categories[change.category].push(change.description);
         });
-        
-        changelogItems.appendChild(categoryDiv);
+
+        Object.entries(categories).forEach(([category, descriptions]) => {
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "category-section";
+            
+            const categoryHeader = document.createElement("h4");
+            categoryHeader.className = `category ${category.toLowerCase()}`;
+            categoryHeader.textContent = category;
+            categoryDiv.appendChild(categoryHeader);
+
+            const ul = document.createElement("ul");
+            descriptions.forEach((desc) => {
+                const li = document.createElement("li");
+                li.textContent = desc;
+                ul.appendChild(li);
+            });
+            categoryDiv.appendChild(ul);
+            changesDiv.appendChild(categoryDiv);
+        });
+
+        dateDiv.appendChild(changesDiv);
+        monthSection.appendChild(dateDiv);
     });
     
-    dateSection.appendChild(dateHeader);
-    dateSection.appendChild(changelogItems);
-    changelogContent.appendChild(dateSection);
-    
-   
-    dateHeader.addEventListener("click", () => {
-        dateHeader.classList.toggle("active");
-        changelogItems.classList.toggle("active");
+    changelogContent.appendChild(monthSection);
+});
+
+// Add click event listeners for expand/collapse
+document.querySelectorAll('.date-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const container = header.nextElementSibling;
+        const button = header.querySelector('.expand-btn');
+        const isExpanded = container.classList.contains('expanded');
+        
+        container.classList.toggle('expanded');
+        button.classList.toggle('expanded');
+        
+        if (isExpanded) {
+            container.style.maxHeight = '0';
+        } else {
+            container.style.maxHeight = container.scrollHeight + 'px';
+        }
     });
 });
 
