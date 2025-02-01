@@ -1,4 +1,20 @@
 const changelogData = {
+    "1/2/2025": [
+        { "category": "Added", "description": "StatusChecker for Server Promoters (Jay)" },
+        { "category": "Added", "description": "Most Active Join Dates slash command that shows an image made with canvas and a bar graph of the most active times in the server. (Jay)" },
+        { "category": "Added", "description": "/create-civ which uses SQL queries to upload the civilian character onto the MDT (Can take time to update on MDT) (Jay)" },
+        { "category": "Added", "description": "/search-civ [First Name] [Surname] to get all civilian information from the specified name. (Jay)" },
+        { "category": "Added", "description": "Command used logs for UKRP Utils (Jay)" },
+        { "category": "Added", "description": "Auto Ticket Creation in the event an Account Joins and is below the age of 30 days (Jay)" },
+        { "category": "Added", "description": "Message Template command for @UKRP Founder (Jay)" },
+        { "category": "Added", "description": "New main UKRP website. New domain: https://ukrp.vercel.app/ (Jay)" },
+        { "category": "Added", "description": "New G20 (Ross)" },
+        { "category": "Added", "description": "New LAS Jacket (Ross)" },
+        { "category": "Added", "description": "MET HiVis Rig (Ross)" },
+        { "category": "Added", "description": "MET MC Helmet (Ross)" },
+        { "category": "Removed", "description": "Random reaction role command? (Jay)" }
+
+    ],
     "25/1/2025":[
         { "category": "Added", "description": "LAS thread system (Jay)" },
         { "category": "Added", "description": "LAS Embed with a button to join the training thread (Jay)" },
