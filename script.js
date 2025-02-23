@@ -1,4 +1,42 @@
 const changelogData = {
+    "23/2/2025": [
+        { "category": "Added", "description": "/ap-tags for LAS Command on AP Release (Jay)" },
+        { "category": "Added", "description": "DM Handler for /admin-dm responses in bot DMs (Jay)" },
+        { "category": "Added", "description": "Medic Props for ERPT, MO8 and LAS vehicles (Connor)" },
+        { "category": "Added", "description": "New LFB EUP (Connor)" },
+        { "category": "Added", "description": "LAS Skoda RRV (Ross)" },
+        { "category": "Added", "description": "New 530d LAS GC skin (Ross)" },
+        { "category": "Added", "description": "Level system (Jay)" },
+        { "category": "Added", "description": "AP EUP (Ross)" },
+        { "category": "Added", "description": "Puffer Jackets to LAS (Ross)" },
+        { "category": "Added", "description": "/p (/postal) (Ross)" },
+        { "category": "Added", "description": "LAS bundle to donator-tags.js (Jay)" },
+        { "category": "Added", "description": "/hems-tags (Jay)" },
+        { "category": "Added", "description": "Counting system (Jay)" },
+        { "category": "Added", "description": "/tiktok-post (Jay)" },
+        { "category": "Added", "description": "googleapi to retrieve patrol attendace (Jay)" },
+        { "category": "Added", "description": "Added Debug to changeteam menu (Jay)" },
+        
+        { "category": "Updated", "description": "/link-fivem command to make successful link messages ephemeral (Jay)" },
+        { "category": "Updated", "description": "Interceptor Skins (x5) (Ross)" },
+        { "category": "Updated", "description": "Unmarked Dev S60 Sirens to Rumbler (Connor)" },
+        { "category": "Updated", "description": "Raptor Vehicles to say Interceptor Vehicles on MO8 Garages (Connor)" },
+        { "category": "Updated", "description": "updated ap-tags, las-tags and stats command (Jay)" },
+        
+        { "category": "Fixed", "description": "SCBA Script functionality (Connor)" },
+        { "category": "Fixed", "description": "Postal clash (Ross)" },
+        { "category": "Fixed", "description": "RAPTOR body clipping (Ross)" },
+        { "category": "Fixed", "description": "RTPC double taser (Ross)" },
+        { "category": "Fixed", "description": "Light pattern on Interceptor Cars (Ross)" },
+        
+        { "category": "Removed", "description": "Event Sign up form DM when attending patrols (Jay)" },
+        { "category": "Removed", "description": "/paypal-info (Jay)" },
+        { "category": "Removed", "description": "Broken Boot Script (Connor)" },
+        { "category": "Removed", "description": "Mercades Box 2023, Fiat Ducato - crash related (Ross)" },
+        { "category": "Removed", "description": "/stats due to bot crashes (Jay)" },
+        
+        { "category": "Disabled", "description": "Fires on explosion for Flashbangs and Teargas (Connor)" }
+    ],
     "1/2/2025": [
         { "category": "Added", "description": "StatusChecker for Server Promoters (Jay)" },
         { "category": "Added", "description": "Most Active Join Dates slash command that shows an image made with canvas and a bar graph of the most active times in the server. (Jay)" },
@@ -13,7 +51,7 @@ const changelogData = {
         { "category": "Added", "description": "MET HiVis Rig (Ross)" },
         { "category": "Added", "description": "MET MC Helmet (Ross)" },
         { "category": "Removed", "description": "Random reaction role command? (Jay)" }
-
+    
     ],
     "25/1/2025":[
         { "category": "Added", "description": "LAS thread system (Jay)" },
